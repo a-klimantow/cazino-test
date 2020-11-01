@@ -69,7 +69,20 @@ const reducer = (state, action) => {
         ...item,
         active: i === payload,
       }))
-      return { ...state, categories, categoryList: newList }
+      if (payload === 1) {
+        return {
+          ...state,
+          categoryList: newList,
+          is_most_popular: true,
+          categories: null,
+        }
+      }
+      return {
+        ...state,
+        categories,
+        categoryList: newList,
+        is_most_popular: null,
+      }
     default:
       console.error("app", type)
       return state
